@@ -24,9 +24,9 @@ style="width:500px; height:350px;border:3px solid black;position:relative;">
                 const roomRect = 
                 room.getBoundingClientRect();
             furniture.style.left = 
-                (event.clientX - roomRect.left - room.clientLeft - offsetX) + "px";
+                Math.max(0, Math.min(room.clientWidth - furniture.offsetWidth, event.clientX - roomRect.left - room.clientLeft - offsetX)) + "px";
             furniture.style.top = 
-                (event.clientY - roomRect.top - room.clientTop - offsetY) + "px";
+                Math.max(0, Math.min(room.clientHeight - furniture.offsetHeight,event.clientY - roomRect.top - room.clientTop - offsetY)) + "px";
         }
     }
     );
