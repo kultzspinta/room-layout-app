@@ -21,10 +21,12 @@ style="width:500px; height:350px;border:3px solid black;position:relative;">
     document.addEventListener("mousemove",
         function(event){
             if(isDragging){
+                const roomRect = 
+                room.getBoundingClientRect();
             furniture.style.left = 
-                (event.clientX - offsetX) + "px";
+                (event.clientX - roomRect.left - room.clientLeft - offsetX) + "px";
             furniture.style.top = 
-                (event.clientY - offsetY) + "px";
+                (event.clientY - roomRect.top - room.clientTop - offsetY) + "px";
         }
     }
     );
