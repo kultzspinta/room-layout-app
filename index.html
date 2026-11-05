@@ -20,9 +20,15 @@ alert("Javascript起動確認");
     // タッチ操作で画面がスクロールしないようにする
     furniture.style.touchAction = "none";
 
+    document.addEventListener("pointerdown"),
+    function(event){
+        alert("画面タッチ検出！");
+    };:
+
         alert("家具の取得:" + (forniture !== null));
     furniture.addEventListener("pointerdown",
     function(event){
+
         isDragging = true;
         alert("家具にタッチしました！");
 
