@@ -8,10 +8,18 @@ style="width:500px; height:350px;border:3px solid black;position:relative;">
     <button onclick="alert('家具を動かすぞ！')">家具を動かす</button>
 <script>
 alert("Javascript起動確認");
+
+alert("家具を取得する直前");
+
     const furniture = 
     document.getElementById("furniture");
+
+alert("家具取得完了");
+
     const room =
         document.getElementById("room");
+
+alert("部屋取得完了");
 
     let isDragging = false;
     let offsetX = 0;
