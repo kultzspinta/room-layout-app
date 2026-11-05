@@ -1,47 +1,42 @@
 <h1>Room Layout App Ver.0.1</h1>
 <div id="room"
 style="width:500px; height:350px;border:3px solid black;position:relative;">
+    
     <div id="furniture"
-        style="width:120px;height:60px;background:gray;position:absolute;left:100px;top:80px"></div></div>
+        
+style="width:120px;height:60px;background:gray;position:absolute;left:100px;top:80px"></div>
+    
     <div id="furniture2"
-        style="width:80px;height:80pk;background:skyblue;position:absolute;left:250px;top:150px;"></div></div>
-    <button onclick="alert('家具を動かすぞ！')">家具を動かす</button>
+
+style="width:80px;height:80px;background:skyblue;position:absolute;left:250px;top:150px;">
+
+    </div>
+
+</div>
+
+<button onclick="alert('家具を動かすぞ！')">家具を動かす</button>
+
 <script>
 alert("Javascript起動確認");
 
-alert("家具を取得する直前");
+const furniture = 
+document.getElementById("furniture");
+const room =
+document.getElementById("room");
 
-    const furniture = 
-    document.getElementById("furniture");
+let isDragging = false;
+let offsetX = 0;
+let offsetY = 0;
 
-alert("家具取得完了");
+furniture.style.touchAction = "none";
 
-    const room =
-        document.getElementById("room");
-
-alert("部屋取得完了");
-
-    let isDragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    // タッチ操作で画面がスクロールしないようにする
-    furniture.style.touchAction = "none";
-
-    document.addEventListener("pointerdown"),
+furniture.addEventListener("pointerdown",
     function(event){
-        alert("画面タッチ検出！");
-    };:
-
-        alert("家具の取得:" + (forniture !== null));
-    furniture.addEventListener("pointerdown",
-    function(event){
-
         isDragging = true;
-        alert("家具にタッチしました！");
 
-        const rect =
-    furniture.getBoundingClientRect();
+        const rect = 
+furniture.getBoundingClientRect();
+
         offsetX = event.clientX - rect.left;
         offsetY = event.clientY - rect.top;
     
@@ -57,18 +52,21 @@ alert("部屋取得完了");
     room.getBoundingClientRect();
 
         const x = event.clientX - roomRect.left
-    - room.clientLeft - offsetX;
+            - room.clientLeft - offsetX;
         const y = event.clientY - roomRect.top
-    - room.clientTop - offsetY;
+            - room.clientTop - offsetY;
 
         furniture.style.left =
             Math.max(0,
-    Math.min(room.clientWidth - 
-    furniture.offsetWidth, X)) + "px";
+                Math.min(room.clientWidth - 
+    furniture.offsetWidth, x)
+            ) + "px";
+        
         furniture.style.top =
             Math.max(0,
                 Math.min(room.clientHeight -
-                    furniture.offsetHeight, y)) + "px";
+    furniture.offsetHeight, y)
+            ) + "px";
     });
 
     function stopDragging(){
