@@ -27,6 +27,8 @@ const furnitureList = [
     document.getElementById("furniture2")
 ];
 
+let selectedFurniture = null;
+
 furnitureList.forEach(function(furniture){
 let isDragging = false;
 let offsetX = 0;
@@ -36,6 +38,15 @@ furniture.style.touchAction = "none";
 
 furniture.addEventListener("pointerdown",
     function(event){
+            if(selectedFurniture){
+                selectedFurniture.style.outline =
+    ="none";
+            }
+
+            selectedFurniture = furniture;
+            selectedFurniture.style.outline = 
+    "3px solid red";
+    
         isDragging = true;
 
         const rect = 
