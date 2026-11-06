@@ -14,7 +14,7 @@ style="width:80px;height:80px;background:skyblue;position:absolute;left:250px;to
 
 </div>
 
-<button onclick="alert('家具を動かすぞ！')">家具を動かす</button>
+<button id="rotateButton">90度回転</button>
 
 <script>
 alert("Javascript起動確認");
@@ -93,4 +93,32 @@ furniture.getBoundingClientRect();
     furniture.addEventListener("pointercancel",
     stopDragging);
     });
+
+    document.getElementById("rotateButton")
+        .addEventListener("click",function(){
+            if(!selectedFurniture) return;
+
+            const oldWidth = 
+    selectedFurniture.offsetWidth;
+            const oldHeight =
+    selectedfurniture.offsetHeight;
+
+            selectedFurniture.style.width = 
+    oldHeight + "px";
+            selectedFurniture.style.height =
+    oldWidth + "px";
+
+            const maxX = room.clientWidth - 
+    selectedFurniture.offsetWidth;
+            const maxY = room.clientHeight - 
+    selectedFurniture.offsetHeight;
+
+            selectedFurniture.style.left = 
+                Math.max(0,Math.min(maxX,
+    selectedFurniture.offsetLeft)) + "px";
+            selectedFurniture.style.top =arguments
+                Math.max(0,Math.min(maxY,
+            selectedFurniture.offsetTop)) + "px";
+                });
+
     </script>
