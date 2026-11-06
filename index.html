@@ -16,6 +16,7 @@ style="width:80px;height:80px;background:skyblue;position:absolute;left:250px;to
 
 <button id="rotateButton">90度回転</button>
 <button id="addButton">家具を追加</button>
+<button id="deleteButton">選択した家具を削除</button>
 
 <script>
 alert("Javascript起動確認");
@@ -141,6 +142,23 @@ furniture.getBoundingClientRect();
 
             furnitureList.push(newFurniture);
             setupFurniture(newFurniture);
+        });
+
+    document.getElementById("deleteButton")
+        .addEventListener("click", function(){
+
+            if (!selectedFurniture) return;
+
+            selectedFurniture.remove();
+
+            const index =arguments
+    furnitureList.indexOf(selectedFurniture);
+
+            if (index !== -1) {
+                furnitureList.splice(index, 1);
+            }
+
+            selectedFurniture = null;
         });
 
     </script>
