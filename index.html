@@ -15,6 +15,7 @@ style="width:80px;height:80px;background:skyblue;position:absolute;left:250px;to
 </div>
 
 <button id="rotateButton">90度回転</button>
+<button id="addButton">家具を追加</button>
 
 <script>
 alert("Javascript起動確認");
@@ -22,14 +23,14 @@ alert("Javascript起動確認");
 const room =
 document.getElementById("room");
 
-const furnitureList = [
+let furnitureList = [
     document.getElementById("furniture"),
     document.getElementById("furniture2")
 ];
 
 let selectedFurniture = null;
 
-furnitureList.forEach(function(furniture){
+function setupFurniture(furniture){
 let isDragging = false;
 let offsetX = 0;
 let offsetY = 0;
@@ -92,7 +93,9 @@ furniture.getBoundingClientRect();
     stopDragging);
     furniture.addEventListener("pointercancel",
     stopDragging);
-    });
+    }
+
+    furnitureList.forEach(setupFurniture);
 
     document.getElementById("rotateButton")
         .addEventListener("click",function(){
@@ -120,5 +123,24 @@ furniture.getBoundingClientRect();
                 Math.max(0,Math.min(maxY,
             selectedFurniture.offsetTop)) + "px";
                 });
+
+    document.getElementById("addButton")
+        .addEventListener("click", function(){
+
+            const newFurniture = 
+    document.createElement("div");
+
+            newFurniture.style.width = "100px";
+            newFurniture.style.height = "60px";
+            newFurniture.style.background = "tan";
+            newFurniture.style.position = "absolute";
+            newFurniture.style.left = "20px";
+            newFurniture.style.top = "20px";
+
+            room.appendChild(newFurniture);
+
+            furnitureList.push(newFurniture);
+            setupFurniture(newFurniture);
+        });
 
     </script>
