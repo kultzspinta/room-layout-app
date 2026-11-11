@@ -1,4 +1,19 @@
 <h1>Room Layout App Ver.0.1</h1>
+
+<p>
+    部屋の幅(cm):
+    <input type="number" id="roomWidthInput"
+           value="400" min="1"> 
+</p>
+
+<p>
+    部屋の奥行き(cm):
+    <input type="number" id="roomDepthInput"
+           value="280" min="1"> 
+</p>
+
+<button id="applyRoomSize">寸法を設定</button>
+
 <div id="room"
 style="width:500px; height:350px;border:3px solid black;position:relative;">
     
@@ -27,9 +42,7 @@ document.getElementById("room");
 let roomWidthCm = 400;
 let roomDepthCm = 280;
 
-const pixelsPerCm = 500 / roomWidthCm;
-
-alert("1cm = " + pixelsPerCm + "px");
+let pixelsPerCm = 500 / roomWidthCm;
 
 let furnitureList = [
     document.getElementById("furniture"),
@@ -168,4 +181,38 @@ furniture.getBoundingClientRect();
             selectedFurniture = null;
         });
 
+        document.getElementById("applyRoomSize")
+            .addEventListener("click", function() {
+
+                const newWidth = Number(
+            
+        document.getElementById("roomWidthInput").value
+
+                );
+    
+                const newDepth = Number(
+
+        document.getElementById("roomDepthInput").value
+
+            );
+
+            if (newWidth <= 0  || newDepth <= 0)
+        {
+                alert("正しい寸法を入力してください")
+                return;
+        }
+
+        roomWidthCm = newWidth;
+        roomDepthCm = newDepth;
+
+        pixelsPerCm = 500 / roomWidthCm;
+
+        alert(
+            "部屋の寸法:" +
+            roomWidthCm + " x " +
+            roomDepthCm + "cm\n" +
+            "縮尺:1cm = " +
+            pixelsPerCm.toFixed(2) + "px"
+    );
+    });
     </script>
