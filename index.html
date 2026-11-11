@@ -29,7 +29,7 @@ let roomDepthCm = 280;
 
 const pixelsPerCm = 500 / roomWidthCm;
 
-alert("1cm =",pixelPerCm,"px");
+alert("1cm =",pixelsPerCm,"px");
 
 let furnitureList = [
     document.getElementById("furniture"),
@@ -158,7 +158,7 @@ furniture.getBoundingClientRect();
 
             selectedFurniture.remove();
 
-            const index =arguments
+            const index =
     furnitureList.indexOf(selectedFurniture);
 
             if (index !== -1) {
