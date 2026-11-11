@@ -24,6 +24,13 @@ alert("Javascript起動確認");
 const room =
 document.getElementById("room");
 
+let roomWidthCm = 400;
+let roomDepthCm = 280;
+
+const pixelsPerCm = 500 / roomWidthCm;
+
+alert("1cm =",pixelPerCm,"px");
+
 let furnitureList = [
     document.getElementById("furniture"),
     document.getElementById("furniture2")
