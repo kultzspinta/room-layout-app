@@ -207,6 +207,33 @@ furniture.getBoundingClientRect();
 
         pixelsPerCm = 500 / roomWidthCm;
 
+        const roomHeightPx = roomDepthCm *
+pixelsPerCm;
+
+room.style.height = roomHeightPx + "px";
+
+furnitureList.forEach(function(furniture){
+
+    const maxX = Math.max(
+        0, room.clientWidth - 
+furniture.offsetWidth
+    );
+
+    const maxY = Math.max(
+        0,room.clientHeight - 
+    furniture.offsetHeight
+    );
+
+    furniture.style.left =
+        Math.max(0,Math.min(maxX,
+furniture.offsetLeft)) + "px";
+
+    furniture.style.top =
+        Math.max(0,Math.min(maxY,
+furniture.offsetTop)) + "px";
+
+});
+
         alert(
             "部屋の寸法:" +
             roomWidthCm + " x " +
